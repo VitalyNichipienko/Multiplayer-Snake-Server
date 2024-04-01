@@ -55,7 +55,6 @@ export class StateHandlerRoom extends Room<State> {
     }
 
     onJoin (client: Client) {
-        client.send("hello", "world");
         this.state.createPlayer(client.sessionId);
     }
 
@@ -66,5 +65,4 @@ export class StateHandlerRoom extends Room<State> {
     onDispose () {
         console.log("Dispose StateHandlerRoom");
     }
-
 }
