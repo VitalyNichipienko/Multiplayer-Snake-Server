@@ -7,6 +7,9 @@ export class Player extends Schema {
 
     @type("number")
     y = Math.floor(Math.random() * 400);
+
+    @type("uint8")
+    detailCount = 2;
 }
 
 export class State extends Schema {
