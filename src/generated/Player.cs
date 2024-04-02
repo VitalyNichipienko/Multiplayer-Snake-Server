@@ -16,5 +16,8 @@ public partial class Player : Schema {
 
 	[Type(2, "uint8")]
 	public byte detailCount = default(byte);
+
+	[Type(3, "uint8")]
+	public byte skinIndex = default(byte);
 }
 

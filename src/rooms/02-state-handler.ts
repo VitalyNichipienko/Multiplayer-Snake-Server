@@ -10,16 +10,20 @@ export class Player extends Schema {
 
     @type("uint8")
     detailCount = 2;
+
+    @type("uint8")
+    skinIndex = 0;
 }
 
 export class State extends Schema {
     @type({ map: Player })
     players = new MapSchema<Player>();
 
-    something = "This attribute won't be sent to the client-side";
-
     createPlayer(sessionId: string) {
-        this.players.set(sessionId, new Player());
+        let player = new Player();
+        let colorIndex = Math.floor(Math.random() * 7);
+        player.skinIndex = colorIndex;
+        this.players.set(sessionId, player);
     }
 
     removePlayer(sessionId: string) {
@@ -50,7 +54,7 @@ export class StateHandlerRoom extends Room<State> {
     }
 
     onJoin (client: Client) {
-        this.state.createPlayer(client.sessionId);
+        this.state.createPlayer(client.sessionId);        
     }
 
     onLeave (client) {
