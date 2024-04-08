@@ -10,5 +10,8 @@ using Colyseus.Schema;
 public partial class State : Schema {
 	[Type(0, "map", typeof(MapSchema<Player>))]
 	public MapSchema<Player> players = new MapSchema<Player>();
+
+	[Type(1, "array", typeof(ArraySchema<Vector2Float>))]
+	public ArraySchema<Vector2Float> apples = new ArraySchema<Vector2Float>();
 }
 
