@@ -2,13 +2,13 @@ import { Room, Client } from "colyseus";
 import { Schema, type, MapSchema, ArraySchema } from "@colyseus/schema";
 
 export class Vector2Float extends Schema{
-    @type("number")x = Math.floor(Math.random() * 256) -128;
-    @type("number") z = Math.floor(Math.random() * 256) -128;
+    @type("number")x = Math.floor(Math.random() * 128) -64;
+    @type("number") z = Math.floor(Math.random() * 128) -64;
 }
 
 export class Player extends Schema {
-    @type("number") x = Math.floor(Math.random() * 256) -128;
-    @type("number") z = Math.floor(Math.random() * 256) -128;
+    @type("number") x = Math.floor(Math.random() * 128) -64;
+    @type("number") z = Math.floor(Math.random() * 128) -64;
     @type("uint8") detailCount = 2; 
     @type("uint8") skinIndex = 0;
 }
