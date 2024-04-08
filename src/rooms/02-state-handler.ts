@@ -17,12 +17,20 @@ export class Player extends Schema {
 
 export class State extends Schema {
     @type({ map: Player })
-    players = new MapSchema<Player>();
+    players = new MapSchema<Player>();    
+    colorIndices: number[] = [0, 1, 2, 3, 4, 5, 6, 7];
 
     createPlayer(sessionId: string) {
         let player = new Player();
-        let colorIndex = Math.floor(Math.random() * 7);
+        let colorIndex = Math.floor(Math.random() * this.colorIndices.length);
+
         player.skinIndex = colorIndex;
+
+        const index = this.colorIndices.indexOf(colorIndex, 0);
+        if (index > -1) {
+            this.colorIndices.splice(index, 1);
+        }
+
         this.players.set(sessionId, player);
     }
 
