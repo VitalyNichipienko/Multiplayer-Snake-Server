@@ -25,15 +25,9 @@ export class State extends Schema {
 
     createPlayer(sessionId: string) {
         let player = new Player();
-        let colorIndex = Math.floor(Math.random() * this.colorIndices.length);
+        let colorIndex = this.getRandomColorIndexAndRemove();
 
         player.skinIndex = colorIndex;
-
-        const index = this.colorIndices.indexOf(colorIndex, 0);
-        if (index > -1) {
-            this.colorIndices.splice(index, 1);
-        }
-
         this.players.set(sessionId, player);
     }
 
@@ -44,6 +38,11 @@ export class State extends Schema {
     movePlayer (sessionId: string, movement: any) {
         this.players.get(sessionId).x = movement.x;
         this.players.get(sessionId).z = movement.z;
+    }
+    
+    private getRandomColorIndexAndRemove(): number {
+        const randomIndex = Math.floor(Math.random() * this.colorIndices.length);
+        return this.colorIndices.splice(randomIndex, 1)[0];
     }
 }
 
