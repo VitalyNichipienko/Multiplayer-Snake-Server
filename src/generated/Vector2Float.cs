@@ -8,10 +8,13 @@
 using Colyseus.Schema;
 
 public partial class Vector2Float : Schema {
-	[Type(0, "number")]
-	public float x = default(float);
+	[Type(0, "uint32")]
+	public uint id = default(uint);
 
 	[Type(1, "number")]
+	public float x = default(float);
+
+	[Type(2, "number")]
 	public float z = default(float);
 }
 

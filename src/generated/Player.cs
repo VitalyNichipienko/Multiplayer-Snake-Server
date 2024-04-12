@@ -19,5 +19,8 @@ public partial class Player : Schema {
 
 	[Type(3, "uint8")]
 	public byte skinIndex = default(byte);
+
+	[Type(4, "uint16")]
+	public ushort score = default(ushort);
 }
 
